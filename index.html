@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -178,7 +177,7 @@
             display: flex;
         }
 
-        /* ===== THREE STYLE BUTTONS - TRANSLUCENT ===== */
+        /* ===== STYLE BUTTONS - TRANSLUCENT ===== */
         .style-btn {
             padding: 6px 18px;
             border-radius: 50px;
@@ -486,7 +485,7 @@
                 <i class="fas fa-quote-right"></i> <span>Buy Now</span>
             </button>
 
-            <!-- ✅ CHANGED: Close button → Product Page button -->
+            <!-- ✅ Product Page — opens in a NEW TAB -->
             <button class="close" onclick="loadProductPage()">
                 <i class="fas fa-shopping-bag"></i> Product Page
             </button>
@@ -544,9 +543,10 @@
         const QUOTE_PAGE_URL = 'https://copecart.com/us/products/71c85b19/checkout';
 
         // ============================================
-        // ⚠️ PRODUCT PAGE URL — PASTE YOURS HERE ⚠️
+        // ⚠️ PASTE YOUR PRODUCT PAGE URL HERE ⚠️
+        // Opens in a NEW TAB (like a normal website)
         // ============================================
-        const PRODUCT_PAGE_URL = 'https://your-product-page-url-here.com';
+        const PRODUCT_PAGE_URL = 'https://www.theartisticunity.art/#booking-hub';
 
         // ============================================
         // GET URL PARAMETERS
@@ -603,27 +603,11 @@
         }
 
         // ============================================
-        // ✅ LOAD PRODUCT PAGE IN IFRAME
+        // ✅ OPEN PRODUCT PAGE IN A NEW TAB
         // ============================================
         function loadProductPage() {
-            document.querySelectorAll('.style-btn').forEach(btn => {
-                btn.classList.remove('active');
-                btn.classList.remove('clicked');
-            });
-
-            loadingOverlay.classList.remove('hidden');
-            frame.src = PRODUCT_PAGE_URL;
-            isQuotePageLoaded = true;
-
-            frame.onload = function() {
-                loadingOverlay.classList.add('hidden');
-            };
-
-            setTimeout(() => {
-                loadingOverlay.classList.add('hidden');
-            }, 3000);
-
-            console.log('🛍️ Product page loaded:', PRODUCT_PAGE_URL);
+            window.open(PRODUCT_PAGE_URL, '_blank');
+            console.log('🛍️ Product page opened in new tab:', PRODUCT_PAGE_URL);
         }
 
         // ============================================
@@ -695,7 +679,7 @@
             console.log('✨ Website Viewer loaded!');
             console.log('📱 Current style:', style);
             console.log('🎨 Click Minimalistic, Fancy, or Blended to switch');
-            console.log('🛍️ Click "Product Page" to load your product URL');
+            console.log('🛍️ Click "Product Page" to open your product URL in a NEW TAB');
         }
 
         // ============================================
